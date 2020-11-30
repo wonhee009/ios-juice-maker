@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             fruitView.translatesAutoresizingMaskIntoConstraints = false
             fruitStack.addArrangedSubview(fruitView)
             fruitView.widthAnchor.constraint(equalTo: fruitView.heightAnchor, multiplier: 1.0).isActive = true
-            fruitView.fruitName.text = fruitName.rawValue
+            fruitView.fruitName.text = fruitName.getName()
             fruitView.fruitStock.text = String(fruit.stock)
             
             fruitViews.append(fruitView)
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
     }
     
     func outOfStockError(_ error: JuiceMakerError) {
-        let alert = UIAlertController(title: nil, message: error.getMessage(), preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "예", style: .default) { _ in
             self.moveManageStock()
         }
